@@ -67,7 +67,7 @@ namespace ProjectTeste
             this.panel2 = new System.Windows.Forms.Panel();
             this.textStep = new System.Windows.Forms.Label();
             this.painelGrafico = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.OptionsPanel = new System.Windows.Forms.PictureBox();
             this.painelOpcoes = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxQuant = new System.Windows.Forms.TextBox();
@@ -91,7 +91,7 @@ namespace ProjectTeste
             ((System.ComponentModel.ISupportInitialize)(this.setaR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.setaL)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OptionsPanel)).BeginInit();
             this.painelOpcoes.SuspendLayout();
             this.painelDescricao.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imagemDescricao)).BeginInit();
@@ -544,20 +544,19 @@ namespace ProjectTeste
             this.painelGrafico.Name = "painelGrafico";
             this.painelGrafico.Size = new System.Drawing.Size(695, 504);
             this.painelGrafico.TabIndex = 4;
-            this.painelGrafico.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
-            // pictureBox1
+            // OptionsPanel
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1213, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(44, 45);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.OptionsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.OptionsPanel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OptionsPanel.Image = ((System.Drawing.Image)(resources.GetObject("OptionsPanel.Image")));
+            this.OptionsPanel.Location = new System.Drawing.Point(1213, 8);
+            this.OptionsPanel.Name = "OptionsPanel";
+            this.OptionsPanel.Size = new System.Drawing.Size(44, 45);
+            this.OptionsPanel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.OptionsPanel.TabIndex = 5;
+            this.OptionsPanel.TabStop = false;
+            this.OptionsPanel.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // painelOpcoes
             // 
@@ -683,7 +682,7 @@ namespace ProjectTeste
             this.Controls.Add(this.textoLabel);
             this.Controls.Add(this.painelOpcoes);
             this.Controls.Add(this.painelFundo);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.OptionsPanel);
             this.Controls.Add(this.painelGrafico);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -696,7 +695,6 @@ namespace ProjectTeste
             this.MinimumSize = new System.Drawing.Size(720, 420);
             this.Name = "Placa_0000_";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Placa_0000__Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Placa_0000__KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
@@ -717,7 +715,7 @@ namespace ProjectTeste
             ((System.ComponentModel.ISupportInitialize)(this.setaR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.setaL)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OptionsPanel)).EndInit();
             this.painelOpcoes.ResumeLayout(false);
             this.painelOpcoes.PerformLayout();
             this.painelDescricao.ResumeLayout(false);
@@ -748,7 +746,7 @@ namespace ProjectTeste
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel painelGrafico;
         private System.Windows.Forms.Label resis10ktotal;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox OptionsPanel;
         private System.Windows.Forms.Panel painelOpcoes;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxQuant;

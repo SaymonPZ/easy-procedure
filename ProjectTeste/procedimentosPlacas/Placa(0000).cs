@@ -9,19 +9,16 @@ using System.Windows.Forms;
 namespace ProjectTeste
 {
     public partial class Placa_0000_ : Form
-    {
-        // imagens das etapas
-        Image imgstep0 = Image.FromFile(@"C:\EasyProFiles\placaTeste0000\FFRSKBCJ0MOQ4FC.jpg");
-        Image imgstep1 = Image.FromFile(@"C:\EasyProFiles\placaTeste0000\FFRSKBCJ0MOQ4FCStep1.jpg");
-        Image imgstep2 = Image.FromFile(@"C:\EasyProFiles\placaTeste0000\FFRSKBCJ0MOQ4FCStep2.jpg");
-        Image imgstep3 = Image.FromFile(@"C:\EasyProFiles\placaTeste0000\FFRSKBCJ0MOQ4FCStep3.jpg");
-        Image imgstep4 = Image.FromFile(@"C:\EasyProFiles\placaTeste0000\FFRSKBCJ0MOQ4FCFinal.jpg");
+    { 
+        Image imgstep0;
+        Image imgstep1;
+        Image imgstep2;
+        Image imgstep3;
+        Image imgstep4;
 
-        //imagens das descrições
-
-        Image imgRes10k5p = Image.FromFile(@"C:\EasyProFiles\Componentes\Resistores\10k5%.jpg");
-        Image imgRes1k5p = Image.FromFile(@"C:\EasyProFiles\Componentes\Resistores\1k5%.jpg");
-        Image imgCapEletro1000u50v = Image.FromFile(@"C:\EasyProFiles\Componentes\CapEletro\1000uf50V.jpg");
+        Image imgRes10k5p;
+        Image imgRes1k5p;
+        Image imgCapEletro1000u50v;
 
         //variaveis
         int step = 0;
@@ -38,34 +35,33 @@ namespace ProjectTeste
             InitializeComponent();
             painelDescricao.Height = 29;
             painelFundo.TabStop = false;
+            carregarImagens();
         }
 
-        private void Placa_0000__Load(object sender, EventArgs e)
-        {
-        }
 
-        private void panel6_Paint(object sender, PaintEventArgs e)
+        // Funções
+        private void carregarImagens()
         {
-        }
-
-        private void setaR_Click(object sender, EventArgs e)
-        {
-            if(step < numeroDePassos)
+            try
             {
-                step++;
-            }
-            etapa();
-        }
+                // imagens das etapas
+                imgstep0 = Image.FromFile(@"C:\EasyProFiles\placaTeste0000\FFRSKBCJ0MOQ4FC.jpg");
+                imgstep1 = Image.FromFile(@"C:\EasyProFiles\placaTeste0000\FFRSKBCJ0MOQ4FCStep1.jpg");
+                imgstep2 = Image.FromFile(@"C:\EasyProFiles\placaTeste0000\FFRSKBCJ0MOQ4FCStep2.jpg");
+                imgstep3 = Image.FromFile(@"C:\EasyProFiles\placaTeste0000\FFRSKBCJ0MOQ4FCStep3.jpg");
+                imgstep4 = Image.FromFile(@"C:\EasyProFiles\placaTeste0000\FFRSKBCJ0MOQ4FCFinal.jpg");
 
-        private void setaL_Click(object sender, EventArgs e)
-        {
-            if(step > 0)
+                //imagens das descrições
+
+                imgRes10k5p = Image.FromFile(@"C:\EasyProFiles\Componentes\Resistores\10k5%.jpg");
+                imgRes1k5p = Image.FromFile(@"C:\EasyProFiles\Componentes\Resistores\1k5%.jpg");
+                imgCapEletro1000u50v = Image.FromFile(@"C:\EasyProFiles\Componentes\CapEletro\1000uf50V.jpg");
+            }
+            catch (Exception erro)
             {
-                step--;
+                MessageBox.Show("Algo de errado ocorreu, ferifique a integridade dos arquivos. Erro: " + erro);
             }
-            etapa();
         }
-
         private void etapa()
         {
             textStep.Text = Convert.ToString(step);
@@ -107,22 +103,7 @@ namespace ProjectTeste
             }
         }
 
-
-
-        private void Placa_0000__KeyDown(object sender, KeyEventArgs e)
-        {
-            // seta para esquerda e direita mudam as etapas
-
-            if(e.KeyCode == Keys.Left)
-            {
-                setaL_Click(null,null);
-            }
-            else if(e.KeyCode == Keys.Right)
-            {
-                setaR_Click(null, null);
-            }
-        }
-
+        // Paineis adicionais
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -141,7 +122,6 @@ namespace ProjectTeste
                 opcoes = false;
             }
         }
-
         private void botaoDescricao_MouseClick(object sender, MouseEventArgs e)
         {
             painelGrafico.Focus();
@@ -155,42 +135,12 @@ namespace ProjectTeste
             }
         }
 
-
-        private void textBoxQuant_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            // permite apenas numeros e teclas de ações na caixa de texto
-
-            char number = e.KeyChar;
-
-            if (!char.IsDigit(number) && number != 8 && number != 13)
-            {
-                e.Handled = true;
-            }
-        }
-
-
-        private void textBoxQuant_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-
-                //muda valores
-                resis10ktotal.Text = Convert.ToString(int.Parse(textBoxQuant.Text) * res10k);
-                resis1kTotal.Text = Convert.ToString(int.Parse(textBoxQuant.Text) * res1k);
-                cap1000pfTotal.Text = Convert.ToString(int.Parse(textBoxQuant.Text) * cap1000pf);
-            }
-        }
-
         // botões passos
         private void botaoPasso1_MouseClick(object sender, MouseEventArgs e)
         {
             step = 1;
             etapa();
         }
-
-
         private void botaoPasso2_MouseClick(object sender, MouseEventArgs e)
         {
             step = 2;
@@ -205,6 +155,63 @@ namespace ProjectTeste
         {
             step = 4;
             etapa();
+        }
+
+        // Setas
+        private void setaR_Click(object sender, EventArgs e)
+        {
+            if(step < numeroDePassos)
+            {
+                step++;
+            }
+            etapa();
+        }
+        private void setaL_Click(object sender, EventArgs e)
+        {
+            if(step > 0)
+            {
+                step--;
+            }
+            etapa();
+        }
+
+        // Funções do teclado
+        private void textBoxQuant_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            // permite apenas numeros e teclas de ações na caixa de texto
+
+            char number = e.KeyChar;
+
+            if (!char.IsDigit(number) && number != 8 && number != 13)
+            {
+                e.Handled = true;
+            }
+        }
+        private void textBoxQuant_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+
+                //muda valores
+                resis10ktotal.Text = Convert.ToString(int.Parse(textBoxQuant.Text) * res10k);
+                resis1kTotal.Text = Convert.ToString(int.Parse(textBoxQuant.Text) * res1k);
+                cap1000pfTotal.Text = Convert.ToString(int.Parse(textBoxQuant.Text) * cap1000pf);
+            }
+        }
+        private void Placa_0000__KeyDown(object sender, KeyEventArgs e)
+        {
+            // seta para esquerda e direita mudam as etapas
+
+            if(e.KeyCode == Keys.Left)
+            {
+                setaL_Click(null,null);
+            }
+            else if(e.KeyCode == Keys.Right)
+            {
+                setaR_Click(null, null);
+            }
         }
     }
 }
